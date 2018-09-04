@@ -15,6 +15,12 @@ class Todo extends Component {
     this.removeItem = this.removeItem.bind(this)
   }
 
+  componentWillReceiveProps (nextProps) {
+    this.setState({
+      items: nextProps.todos
+    })
+  }
+
   handleChange (e) {
     this.setState({ text: e.target.value })
   }
