@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react'
 
-const Name = props => <div> My name is {props.firstName} </div>;
+const Name = props => <div> My name is {props.firstName} </div>
 
-export default Name;
+export default Name
