@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import Name from './containers/Name'
-import Data from './components/Data'
+import Todo from './containers/Todo'
 
 class App extends Component {
   render () {
     return (
       <div className="App">
-        <h1>Hello, React!</h1>
-        <Name firstName="Simi" />
-        <Data />
+        <h1>Welcome!</h1>
+        <Todo />
       </div>
     )
   }
