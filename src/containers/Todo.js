@@ -1,27 +1,19 @@
 import React, { Component } from 'react'
 import TodoList from '../components/TodoList'
-import './todo.scss';
+import './todo.scss'
 
 class Todo extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      items: props.todos,
+      items: [],
       text: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.removeItem = this.removeItem.bind(this)
-  }
-
-  static getDerivedStateFromProps (nextProps, prevState) {
-    if (nextProps.todos.length !== prevState.items.length) {
-      return { items: nextProps.todos }
-    }
-
-    return null
   }
 
   handleChange (e) {
@@ -65,7 +57,6 @@ class Todo extends Component {
           />
           <button>Add Item</button>
         </form>
-
         {this.state.items.length > 0 && (
           <TodoList items={this.state.items} removeItem={this.removeItem} />
         )}
