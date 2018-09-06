@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import TodoList from '../components/TodoList'
 
 class Todo extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
-      items: [],
+      items: props.todos,
       text: ''
     }
 
@@ -15,10 +15,12 @@ class Todo extends Component {
     this.removeItem = this.removeItem.bind(this)
   }
 
-  componentWillReceiveProps (nextProps) {
-    this.setState({
-      items: nextProps.todos
-    })
+  static getDerivedStateFromProps (nextProps, prevState) {
+    if (nextProps.todos.length !== prevState.items.length) {
+      return { items: nextProps.todos }
+    }
+
+    return null
   }
 
   handleChange (e) {
