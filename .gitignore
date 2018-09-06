@@ -1,4 +1,3 @@
-node_modules
-dist/
-.cache/
-eslint **/*.js --ignore-pattern node_modules/
+/node_modules
+/dist
+/.cache

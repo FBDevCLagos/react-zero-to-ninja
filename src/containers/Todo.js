@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TodoList from '../components/TodoList'
+import './todo.scss';
 
 class Todo extends Component {
   constructor () {
@@ -51,8 +52,8 @@ class Todo extends Component {
 
   render () {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div id="todo-container-wrappper">
+        <form onSubmit={this.handleSubmit} id="todo-form">
           <label htmlFor="todo" />
           <input
             id="todo"
@@ -62,6 +63,7 @@ class Todo extends Component {
           />
           <button>Add Item</button>
         </form>
+
         {this.state.items.length > 0 && (
           <TodoList items={this.state.items} removeItem={this.removeItem} />
         )}
