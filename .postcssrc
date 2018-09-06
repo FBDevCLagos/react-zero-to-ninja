@@ -1,0 +1,15 @@
+{
+  "modules": false,
+  "plugins": {
+    "autoprefixer": {
+      "grid": true,
+      "browsers": [
+        "Firefox >= 52",
+        "Chrome >= 55",
+        "ie >= 8",
+        "last 4 versions",
+        "Safari >= 9"
+      ],
+    }
+  }
+}
