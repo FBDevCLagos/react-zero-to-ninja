@@ -119,11 +119,11 @@ A React component can be of two types: either a class component or a functional 
 The simplest way to define a component in React is to write a JavaScript function
 It just returns a function which accepts props and returns a React element. 
 
-```
+```jsx
 const Welcome = props => (<h1>Hello, {props.name}</h1>)
 ```
 
-```
+
 
 A class based component is a JavaScript class. It extends React.Component, and its only required method is render().
 But this component has some neat super powers underneath the surface 
@@ -134,6 +134,7 @@ But this component has some neat super powers underneath the surface
 
 Here's an example of one of those:
 
+```jsx
 class Welcome extends React.Component {
   render() {
     return <h1>Hello, {this.props.name}</h1>;
@@ -152,7 +153,7 @@ Some practices, I would like if we can create two folders:
 
 Let go ahead to create `TodoList` component in `components` folder, this would be a functional component that takes in props and returns output
 
-```
+```jsx
 import React from 'react'
 
 const TodoList = props => (
@@ -173,7 +174,7 @@ export default TodoList
 The `TodoList` would be imported into the `Todo` container component where the props would be passed down to it
 
 
-```
+```jsx
 import React, { Component } from 'react'
 import TodoList from '../components/TodoList'
 
@@ -245,7 +246,7 @@ export default Todo
 
 Then in our `App.js` file we can have import the `Todo.js` so that this can reflect in our browser
 
-```
+```jsx
 import React, { Component } from 'react'
 import Todo from './containers/Todo'
 
