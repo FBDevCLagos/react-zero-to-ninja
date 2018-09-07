@@ -57,7 +57,7 @@ class Todo extends Component {
           />
           <button>Add Item</button>
         </form>
-        {this.state.items.length > 0 && (
+        {this.state.items.length && (
           <TodoList items={this.state.items} removeItem={this.removeItem} />
         )}
       </div>
