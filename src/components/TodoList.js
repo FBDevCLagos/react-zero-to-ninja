@@ -1,14 +1,12 @@
 import React from 'react'
-import './todolist.scss';
+import './todolist.scss'
 
 const TodoList = props => (
   <ul id="todo-list-wrapper">
     {props.items.map(item => (
       <li key={item.id}>
         <span>{item.text}</span>
-        <button onClick={() => props.removeItem(item)}>
-          Remove
-        </button>
+        <button onClick={() => props.removeItem(item)}>Remove</button>
       </li>
     ))}
   </ul>
