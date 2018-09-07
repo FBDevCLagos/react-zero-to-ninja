@@ -8,7 +8,8 @@ class Todo extends Component {
 
     this.state = {
       items: [],
-      text: ''
+      text: '',
+      error: false
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -16,26 +17,35 @@ class Todo extends Component {
     this.removeItem = this.removeItem.bind(this)
   }
 
+  componentDidMount () {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(response => response.json())
+      .then(json => {
+        const todos = json.slice(0, 10)
+        this.setState({ items: [...this.state.items, ...todos] })
+      })
+  }
+
   handleChange (e) {
-    this.setState({ text: e.target.value })
+    this.setState({ text: e.target.value, error: false })
   }
 
   handleSubmit (e) {
     e.preventDefault()
 
-    if (this.state.text.length === 0) {
-      return alert('Please fill in the input field')
-    }
+    if (this.state.text.trim().length === 0) {
+      this.setState({ error: true })
+    } else {
+      const newItem = {
+        title: this.state.text,
+        id: Date.now()
+      }
 
-    const newItem = {
-      text: this.state.text,
-      id: Date.now()
+      this.setState(prevState => ({
+        items: [...prevState.items, newItem],
+        text: ''
+      }))
     }
-
-    this.setState(prevState => ({
-      items: [...prevState.items, newItem],
-      text: ''
-    }))
   }
 
   removeItem (todo) {
@@ -57,6 +67,9 @@ class Todo extends Component {
           />
           <button>Add Item</button>
         </form>
+        {this.state.error && (
+          <span className="error"> You cannot enter an empty todo </span>
+        )}
         {this.state.items.length > 0 && (
           <TodoList items={this.state.items} removeItem={this.removeItem} />
         )}
