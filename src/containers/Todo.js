@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TodoForm from '../components/TodoForm'
 import TodoList from '../components/TodoList'
+import Portal from './portals/Portal'
 import './todo.scss'
 
 class Todo extends Component {
@@ -13,7 +14,8 @@ class Todo extends Component {
         title: '',
         description: ''
       },
-      error: false
+      error: false,
+      showPortal: false
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -74,6 +76,10 @@ class Todo extends Component {
         {this.state.items.length > 0 && (
           <TodoList items={this.state.items} removeItem={this.removeItem} />
         )}
+
+        <Portal>
+          <h1>I am a Portal</h1>
+        </Portal>
       </div>
     )
   }
