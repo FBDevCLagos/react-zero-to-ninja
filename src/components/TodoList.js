@@ -5,7 +5,13 @@ const TodoList = props => (
   <ul id="todo-list-wrapper">
     {props.items.map(item => (
       <li key={item.id}>
-        <span>{item.title}</span>
+        <div>
+          <h3>Title: {item.title}</h3>
+          <p>
+            {' '}
+            <strong>Description:</strong> {item.description}{' '}
+          </p>
+        </div>
         <button onClick={() => props.removeItem(item)}>Remove</button>
       </li>
     ))}

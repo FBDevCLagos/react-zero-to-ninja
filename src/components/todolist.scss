@@ -12,11 +12,12 @@
     width: auto;
     display: flex;
     justify-content: space-between;
-    background: orange;
+    background: #ffa5005c;
     padding: 5px;
     margin: 0 0 5px 0;
+  }
 
-    button {
-    }
+  .text {
+    text-transform:capitalize;
   }
 }

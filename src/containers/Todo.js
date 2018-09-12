@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TodoForm from '../components/TodoForm'
 import TodoList from '../components/TodoList'
 import './todo.scss'
 
@@ -8,7 +9,10 @@ class Todo extends Component {
 
     this.state = {
       items: [],
-      text: '',
+      todo: {
+        title: '',
+        description: ''
+      },
       error: false
     }
 
@@ -17,33 +21,33 @@ class Todo extends Component {
     this.removeItem = this.removeItem.bind(this)
   }
 
-  componentDidMount () {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then(response => response.json())
-      .then(json => {
-        const todos = json.slice(0, 10)
-        this.setState({ items: [...this.state.items, ...todos] })
-      })
-  }
-
   handleChange (e) {
-    this.setState({ text: e.target.value, error: false })
+    const name = e.target.name
+    const todo = this.state.todo
+    todo[name] = e.target.value
+
+    this.setState({ todo, error: false })
   }
 
   handleSubmit (e) {
     e.preventDefault()
+    const { title, description } = this.state.todo
 
-    if (this.state.text.trim().length === 0) {
+    if (title.trim().length === 0 || description.trim().length === 0) {
       this.setState({ error: true })
     } else {
       const newItem = {
-        title: this.state.text,
+        title,
+        description,
         id: Date.now()
       }
 
       this.setState(prevState => ({
         items: [...prevState.items, newItem],
-        text: ''
+        todo: {
+          title: '',
+          description: ''
+        }
       }))
     }
   }
@@ -55,18 +59,15 @@ class Todo extends Component {
   }
 
   render () {
+    const { title, description } = this.state.todo
     return (
       <div id="todo-container-wrappper">
-        <form onSubmit={this.handleSubmit} id="todo-form">
-          <label htmlFor="todo" />
-          <input
-            id="todo"
-            name="todo"
-            value={this.state.text}
-            onChange={this.handleChange}
-          />
-          <button>Add Item</button>
-        </form>
+        <TodoForm
+          title={title}
+          description={description}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+        />
         {this.state.error && (
           <span className="error"> You cannot enter an empty todo </span>
         )}
