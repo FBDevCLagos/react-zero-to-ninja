@@ -5,14 +5,11 @@ const TodoList = props => (
   <ul id="todo-list-wrapper">
     {props.items.map(item => (
       <li key={item.id}>
-        <div>
-          <h3>Title: {item.title}</h3>
-          <p>
-            {' '}
-            <strong>Description:</strong> {item.description}{' '}
-          </p>
+        <div className="todo-item-content">
+          <h3>{item.title}</h3>
+          {item.description}
         </div>
-        <button onClick={() => props.removeItem(item)}>Remove</button>
+        <button id="remove-btn" onClick={() => props.removeItem(item)}>X</button>
       </li>
     ))}
   </ul>
