@@ -1,4 +1,44 @@
 @import '../style/variables.scss';
 
 #todo-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: $whitesmoke;
+
+    input,
+    button,
+    textarea {
+      height: 30px;
+      outline: none;
+      padding: 5px;
+    }
+
+    button {
+      width: 150px;
+    }
+
+  .form-input-group {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      color: $fb-blue;
+      font-weight: bold;
+      line-height: 30px;
+    }
+
+    #description {
+      height: 100px;
+      outline: none;
+      padding: 10px;
+    }
+  }
+
+  #add-btn {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+  }
 }

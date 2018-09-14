@@ -14,6 +14,19 @@ h5 {
   font-weight: 700;
 }
 
+#portal {
+  position: absolute;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  #footer {
+    text-align: center;
+    border-top: 1px solid $whitesmoke;
+  }
+}
+
 #root-container {
   font-size: 14px;
 

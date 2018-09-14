@@ -11,10 +11,22 @@
   li {
     width: auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    background: #ffa5005c;
     padding: 5px;
     margin: 0 0 5px 0;
+    background: $whitesmoke;
+
+    .todo-item-content {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 0.1px solid $dark-blue;
+      padding-bottom: 15px;
+    }
+
+    #remove-btn {
+      width: 50px;
+    }
   }
 
   .text {

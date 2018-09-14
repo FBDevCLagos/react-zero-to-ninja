@@ -1,34 +1,12 @@
 @import '../style/variables.scss';
 
 #todo-container-wrappper {
-  background: $whitesmoke;
   width: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  #todo-form {
-    display: flex;
-    width: 100%;
-
-    input,
-    button {
-      height: 30px;
-      outline: none;
-      padding: 5px;
-    }
-
-    input {
-      display: flex;
-      flex-grow: 2;
-    }
-
-    button {
-      width: 150px;
-    }
-  }
 
   .error { color: red; }
 }

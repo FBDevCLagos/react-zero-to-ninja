@@ -78,7 +78,7 @@ class Todo extends Component {
         )}
 
         <Portal>
-          <h1>I am a Portal</h1>
+          <h1 id="footer">THIS FOOTER IS CREATED USING A PORTAL</h1>
         </Portal>
       </div>
     )
