@@ -13,7 +13,7 @@
 
 HTML form elements work a little bit differently from other DOM elements in React because form elements naturally keep some internal state.
 Form has the default HTML form behavior of browsing to a new page when the user submits the form. However, it is convenient to have a JavaScript function that handles submission and also has access to the data the user submitted.
-The standard way to acvhieve this is, is using a technique called *Controlled Components*
+The standard way to achieve this is, is using a technique called *Controlled Components*
 
 - Controlled Component: Is a component that takes its current value through `props` and notifies changes through callbacks like `onChange`. A parent component "controls" it by handling the callback and managing its own state and passing the new values as props to the controlled component. You could also call this a "dumb component"
 
@@ -161,8 +161,7 @@ In simple terms, lifting state up basically is passing down data in state down a
 
 Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 
-- When to use Context
-Context is designed to share data that can be considered 'global' for a tree of React component such as the current authenticated user, theme or preferred language.
+- When to use Context: Context is designed to share data that can be considered 'global' for a tree of React component such as the current authenticated user, theme or preferred language.
 
 For example 
 
