@@ -12,30 +12,31 @@
 ### Forms
 
 HTML form elements work a little bit differently from other DOM elements in React because form elements naturally keep some internal state.
-Form has the default HTML form behavior of browsing to a new page when the user submits the form. However, it is convenient to have a JavaScript function that handles submission and also has access to the data the user submitted.
-The standard way to achieve this is, is using a technique called *Controlled Components*
+Form has the default HTML form behavior of browsing to a new page when the user submits the form. However, it is convenient to have a JavaScript function that handles submission and also has access to the data the user submitted. *Controlled Components* is the standard technique to achieve this.
 
-- Controlled Component: Is a component that takes its current value through `props` and notifies changes through callbacks like `onChange`. A parent component "controls" it by handling the callback and managing its own state and passing the new values as props to the controlled component. You could also call this a "dumb component"
+- Controlled Component: Is a component that takes its current value through `props` and notifies changes through callbacks like `onChange`. A parent component "controls" it by handling the callback and managing its own state and passing the new values as props to the controlled component. You could also call this a "dumb component".
 
- Example: 
+
+Example:
 
 ```jsx
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 class TodoForm extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       text: '',
       todos: []
-      };
+    }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
-    this.setState({text: event.target.value})
+    this.setState({ text: event.target.value })
   }
 
   handleSubmit (e) {
@@ -65,7 +66,7 @@ class TodoForm extends Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
-    );
+    )
   }
 }
 ```
@@ -76,7 +77,7 @@ class TodoForm extends Component {
 Example:
 
 ```jsx
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 class TodoForm extends React.Component {
   constructor(props) {
@@ -101,7 +102,7 @@ class TodoForm extends React.Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
-    );
+    )
   }
 }
 ```
@@ -109,13 +110,12 @@ class TodoForm extends React.Component {
 
 ### Lifting state up
 
-To shared a state between two components, the most common operation is to move it up to their closest common ancestor is called "lifting state up"
-There should be a single "source of truth" for any data that changes in a React application.
+To share a state between two components, the most common operation is to move it up to their closest common ancestor is called "lifting state up". There should be a single "source of truth" for any data that changes in a React application.
 
-Lets add the `TodoList` component that displays the our todos
+Lets add the `TodoList` component that displays our todos.
 
 
-Say for instance we added a `deleteTodo` handler to a `TodoForm` class Component and then import it into our component
+Say for instance we added a `deleteTodo` handler to a `TodoForm` class Component and then import into our component
 
 ```jsx
 import React, { Component } from 'react'
@@ -130,7 +130,7 @@ import TodoList from '../components/TodoList'
   }
 ```
 
-our `TodoList` should look like this
+our `TodoList` should look like this:
 
 ```jsx
 import React from 'react'
@@ -149,13 +149,14 @@ const TodoList = props => (
 export default TodoList
 ```
 
-And we go ahead to pass the handler down as a prop to the `TodoList` in the class component
+And we go ahead to pass the handler down as a prop to `TodoList` in the class component.
 
 ```jsx
 <TodoList todos={this.state.todos} deleteTodo={this.deleteTodo} />
 ```
 
-In simple terms, lifting state up basically is passing down data in state down as props from the parent component to the child component
+In simple terms, lifting state up basically is passing down data in state as props from the parent component to the child component.
+
 
 ### Context
 
@@ -163,7 +164,7 @@ Context provides a way to pass data through the component tree without having to
 
 - When to use Context: Context is designed to share data that can be considered 'global' for a tree of React component such as the current authenticated user, theme or preferred language.
 
-For example 
+Example:
 
 ```jsx
 import React, { Component } from 'react'
@@ -216,13 +217,13 @@ function ThemedButton (props) {
 export default Theme
 ```
 
-Note: Context is primarily used when some data needs to be accessible by many components at different nesting levels. Apply it sparingly because it makes component reuse more difficult.
+**Note**: Context is primarily used when some data needs to be accessible by many components at different nesting levels. Apply it sparingly because it makes component reuse more difficult.
 
 
 ### Portals
 Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
 
-- Usage: Normally, when an element is returned from a component's render method, it's mounted into the DOM as a child of the nearest parent node:
+- Usage: Normally, when an element is returned from a component render method, it's mounted into the DOM as a child of the nearest parent node:
 
 ```jsx
 render() {
@@ -285,7 +286,9 @@ export default class Portal extends Component {
 ```
 
 We can go ahead to use it any where in our application by wrapping `<Portal>` around the content we want to display in the `<div id="portal"></div>` div
-Sample usage:
+
+
+Example:
 
 ```jsx
 <Portal>
@@ -293,4 +296,4 @@ Sample usage:
 </Portal>
 ```
 
-Note: This would still work and be displayed appropriately like any other component in the application and also take the context from where it is called, the only different is that it would be rendered in the `<div id="portal"></div>` which is outside our root `div`
+**Note**: This would still work and be displayed appropriately like any other component in the application and also take the context from where it is called, the only different is that it would be rendered in the `<div id="portal"></div>` which is outside our root `div`
