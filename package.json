@@ -1,0 +1,45 @@
+{
+    "name": "react-zero-to-nija",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage"
+    },
+    "author": "yats",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-jest": "^23.6.0",
+        "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+        "enzyme": "^3.6.0",
+        "enzyme-adapter-react-16": "^1.5.0",
+        "enzyme-to-json": "^3.3.4",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^23.6.0",
+        "react-test-renderer": "^16.5.2",
+        "redux-mock-store": "^1.5.3"
+    },
+    "dependencies": {
+        "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0",
+        "react-dom": "^16.5.2",
+        "react-redux": "^5.0.7",
+        "redux": "^2.0.0 || ^3.0.0 || ^4.0.0-0",
+        "redux-logger": "^3.0.6",
+        "redux-thunk": "^2.3.0"
+    },
+    "jest": {
+        "verbose": true,
+        "transform": {
+            "^.+\\.js$": "babel-jest"
+        },
+        "setupFiles": [
+            "./test/jestsetup.js"
+        ],
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ]
+    }
+}
